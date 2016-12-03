@@ -53,6 +53,8 @@ def filter_dict(y_tag, x_tag, count, thresh = 100):
     x_lab, y_lab = zip(*xy_lab)
     x_tag = sorted(list(set(x_lab)))
     y_tag = sorted(list(set(y_lab)))
+    #x_tag = list(set(x_lab))
+    #y_tag = list(set(y_lab))
     return y_tag, x_tag
 
 def filter_dict_top(y_tag, x_tag, count, thresh = 100, top = 5):
@@ -75,7 +77,7 @@ def plot_dict(y_tag, x_tag, count, thresh = 100):
     xy_lab = []
     for i, a in enumerate(y_tag):
         for j, b in enumerate(x_tag):
-            if count[(a, b)]> 100:
+            if count[(a, b)]> thresh:
                 xy_list.append((x_range[j], y_range[i]))
                 xy_lab.append((b, a))
     x, y = zip(*xy_list)
