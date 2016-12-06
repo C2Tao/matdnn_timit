@@ -147,11 +147,14 @@ def plot_vert(r, n, m, dot, thresh, x_tag_ext=None, reverse = False):
     return x_tag
 def plot_one(r, n, m, dot, thresh, x_tag_ext=None, rand=False):
     count, y_tag, x_tag, y, x, y_range, x_range = plot_block(r, n, m, dot, thresh, x_tag_ext, rand) 
-    print len(y_tag)
     #count, y_tag, x_tag, y, x, y_range, x_range = plot_block_debug(r, n, m, dot, thresh) 
+    y_n = len(y_tag)
     plt.plot(x, y, '.')
     plt.xticks(x_range, x_tag, rotation=90)
-    plt.gca().axes.get_yaxis().set_ticks([])
+
+    y_pos = np.concatenate((y_range[::10], [y_range[-1]+1.0/(y_n+1)]))[1:]
+    y_tag = range(10,y_n,10) + [y_n]
+    plt.yticks(y_pos, y_tag)
     plt.tight_layout()
     plt.show()
     return x_tag

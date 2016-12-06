@@ -71,8 +71,8 @@ def filter_dict_top(y_tag, x_tag, count, thresh = 100, top = 5):
     return y_tag, x_tag
 
 def plot_dict(y_tag, x_tag, count, thresh = 100):
-    x_range = np.array(range(len(x_tag)), dtype=np.float32)/len(x_tag)
-    y_range = np.array(range(len(y_tag)), dtype=np.float32)/len(y_tag)
+    x_range = np.array(range(1, len(x_tag)+1), dtype=np.float32)/(len(x_tag)+1)
+    y_range = np.array(range(1, len(y_tag)+1), dtype=np.float32)/(len(y_tag)+1)
     xy_list = []
     xy_lab = []
     for i, a in enumerate(y_tag):
